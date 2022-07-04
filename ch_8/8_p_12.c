@@ -1,0 +1,35 @@
+#define _CRT_SECURE_NO_WARNINGS
+#include <stdio.h>
+
+int main(void) {
+	char c;
+	int sum = 0;
+	char char_array[26] = { 1,3,3,2,1,4,2,4,1,8,5,1,3,1,1,3,10,1,1,1,1,4,4,8,4,10 };
+	printf("Enter a word: ");
+
+	while ((c = getchar()) != '\n') {
+		c = toupper(c);
+		int index = c - 'A';
+
+		sum = sum + char_array[index];
+		/*
+		if (c == 'D' || c == 'G')
+			sum += 2;
+		else if (c == 'B' || c == 'C' || c == 'M' || c == 'P')
+			sum += 3;
+		else if (c == 'F' || c == 'H' || c == 'V' || c == 'W' || c == 'Y')
+			sum += 4;
+		else if (c == 'K')
+			sum += 5;
+		else if (c == 'J' || c == 'X')
+			sum += 8;
+		else if (c == 'Q' || c == 'Z')
+			sum += 10;
+		else
+			sum += 1;
+			*/
+	}
+
+	printf("Scrabble value: %d", sum);
+	return 0;
+}
