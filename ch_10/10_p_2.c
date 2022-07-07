@@ -132,7 +132,7 @@ void print_result(void) {
 	else if (straight) printf("Straight");
 	else if (three) printf("Three of a kind");
 	else if (pairs == 2)printf("Two pairs");
-	else if (pairs == 2)printf("Pair");
+	else if (pairs == 1)printf("Pair");
 	else				printf("High card");
 	
 	printf("\n\n");
