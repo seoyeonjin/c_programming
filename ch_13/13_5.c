@@ -1,20 +1,22 @@
 #include <stdio.h>
 
-void capitalize_a(char str[], int n);
+void capitalize_a(char str[]);
 void capitalize_b(char str[]);
 
 int main(void) {
 
 	char str[4] = "abc";
-	int n = 3;
-	
+	printf("%s\n", str);
 	capitalize_b(str);
 	printf("%s", str);
 	return 0;
 }
 
-void capitalize_a(char str[], int n) {
-	for (int i = 0; i < n; i++) {
+void capitalize_a(char str[]) {
+
+	for (int i = 0; ; i++) {
+		if (str[i] == '\0')
+			break;
 		str[i] = toupper(str[i]);
 	}
 }
