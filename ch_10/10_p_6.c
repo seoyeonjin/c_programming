@@ -80,9 +80,6 @@ int main(void) {
 				char ch_1 = pop();
 				char ch_2 = pop();
 				int result = (ch_2 - '0') / (ch_1 - '0');
-				printf("%d, %d: ", ch_1 - '0', ch_2 - '0');
-				printf("%d", result);
-				printf("%d", result + '0');
 				push(result+'0');
 			}
 			else if (ch == '=') {
