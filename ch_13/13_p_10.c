@@ -36,7 +36,7 @@ void reverse_name(char* name) {
 	if (*p2 == ' ')
 		*p2 = '\0';
 
-	strcat(last, ", ");
+	strcat(last, ", "); //sprint를 이용할 수도 있음 -> sprint(name, "%s, %s.", last, first);
 	strcat(first, ".");
 	strcat(last, first);
 	strcpy(name, last);
