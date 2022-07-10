@@ -1,0 +1,143 @@
+#define _CRT_SECURE_NO_WARNINGS
+#include <stdio.h>
+#include <string.h>
+
+#define MAX_REMIND 50
+#define MSG_LEN 60
+
+int read_line(char str[], int n);
+void reminder_a(void);
+void reminder_b(void);
+void reminder_c(void);
+
+int main(void) {
+	//reminder_a();
+	//reminder_b();
+	reminder_c();
+	return 0;
+}
+
+int read_line(char str[], int n) {
+	int ch, i = 0; 
+
+	while ((ch = getchar()) != '\n')
+		if (i < n)
+			str[i++] = ch;
+	str[i] = '\0';
+	return i;
+}
+
+void reminder_a(void) {
+	char reminders[MAX_REMIND][MSG_LEN + 3];
+	char day_str[3], msg_str[MSG_LEN + 1];
+	int day, i, j, num_remind = 0;
+
+	for (;;) {
+		if (num_remind == MAX_REMIND) {
+			printf("-- No space left --\n");
+			break;
+		}
+		printf("Enter day and reminder: ");
+		scanf("%2d", &day);
+		if (day == 0)
+			break;
+		else if (day > 31 || day < 0) {
+			int ch;
+			while ((ch = getchar()) != '\n');
+			continue;
+		}
+		sprintf(day_str, "%2d", day);
+		read_line(msg_str, MSG_LEN);
+
+		for (i = 0; i < num_remind; i++)
+			if (strcmp(day_str, reminders[i]) < 0)
+				break;
+		for (j = num_remind; j > i; j--)
+			strcpy(reminders[j], reminders[j - 1]);
+		strcpy(reminders[i], day_str);
+		strcat(reminders[i], msg_str);
+
+		num_remind++;
+	}
+	printf("\nDay Reminder\n");
+	for (i = 0; i < num_remind; i++)
+		printf(" %s\n", reminders[i]);
+}
+
+void reminder_b(void) {
+	char reminders[MAX_REMIND][MSG_LEN + 3];
+	char day_str[20], msg_str[MSG_LEN + 1];
+	char min_str[3], hour_str[20];
+	int day, i, j, num_remind = 0, hour, min;
+
+	for (;;) {
+		if (num_remind == MAX_REMIND) {
+			printf("-- No space left --\n");
+			break;
+		}
+		printf("Enter day and reminder: ");
+		scanf("%2d", &day);
+		if (day == 0)
+			break;
+		scanf("%2d:%2d", &hour, &min);
+		sprintf(day_str, "%2d", day);
+		sprintf(hour_str, "%2d", hour);
+		sprintf(min_str, "%2.2d", min);
+		read_line(msg_str, MSG_LEN);
+
+		strcat(hour_str, ":");
+
+		strcat(hour_str, min_str);
+		strcat(day_str, hour_str);
+;		for (i = 0; i < num_remind; i++)
+			if (strcmp(day_str, reminders[i]) < 0)
+				break;
+		for (j = num_remind; j > i; j--)
+			strcpy(reminders[j], reminders[j - 1]);
+		strcpy(reminders[i], day_str);
+		strcat(reminders[i], msg_str);
+
+		num_remind++;
+	}
+	printf("\nDay Reminder\n");
+	for (i = 0; i < num_remind; i++)
+		printf(" %s\n", reminders[i]);
+
+}
+
+void reminder_c(void) {
+	char reminders[MAX_REMIND][MSG_LEN + 3];
+	char day_str[3], msg_str[MSG_LEN + 1];
+	char month_str[20];
+	int day, i, j, num_remind = 0, month;
+
+	for (;;) {
+		if (num_remind == MAX_REMIND) {
+			printf("-- No space left --\n");
+			break;
+		}
+		printf("Enter day and reminder: ");
+		scanf("%2d/%2d",&month, &day);
+		if (month == 0)
+			break;
+		sprintf(month_str, "%2.2d", month);
+		sprintf(day_str, "%2.2d", day);
+		read_line(msg_str, MSG_LEN);
+
+		strcat(month_str, "/");
+		strcat(month_str, day_str);
+		for (i = 0; i < num_remind; i++)
+			if (strcmp(month_str, reminders[i]) < 0)
+				break;
+		for (j = num_remind; j > i; j--)
+			strcpy(reminders[j], reminders[j - 1]);
+		strcpy(reminders[i], month_str);
+		strcat(reminders[i], msg_str);
+
+		num_remind++;
+	}
+	printf("\nDay Reminder\n");
+	for (i = 0; i < num_remind; i++)
+		printf(" %s\n", reminders[i]);
+
+}
