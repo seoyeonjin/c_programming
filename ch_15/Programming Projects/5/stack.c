@@ -1,11 +1,24 @@
 #include <stdlib.h>
 #include <stdio.h>
-#include "stack.h"
 
 #define STACK_SIZE 100
 
-char contents[STACK_SIZE];
+int contents[STACK_SIZE];
 int top = 0;
+
+void stack_underflow(void);
+
+void stack_overflow(void);
+
+void make_empty(void);
+
+bool is_empty(void);
+
+bool is_full(void);
+
+void push(char i);
+
+char pop(void);
 
 void stack_underflow(void) {
 	printf("Not enough operands");
